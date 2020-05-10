@@ -34,7 +34,6 @@ import 'moment/locale/en-ie';
 import { CookiesProvider } from 'react-cookie';
 import { encrypt } from "./utils/crypto.js"
 
-const hist = createBrowserHistory();
 let cookies = new Cookies();
 
 class Index extends Component{
@@ -102,9 +101,7 @@ class Index extends Component{
     let translation = require("./components/translation/" + area);
     let localeData = require("react-intl/locale-data/" + area);
     addLocaleData(localeData);
-    console.log(cookies.get(encrypt("token")))
-    return(
-      <>      
+    return(  
       <CookiesProvider>
       <IntlProvider locale={translation.locale} messages={translation.messages}>        
         <BrowserRouter basename="">    
@@ -131,7 +128,6 @@ class Index extends Component{
         </BrowserRouter>      
       </IntlProvider>
       </CookiesProvider>
-    </>
     );
   }
 }
