@@ -148,6 +148,7 @@ class Login extends React.Component {
     this.dicIdiomas.map((prop) =>{
         if (idioma === prop.idioma)
         pais = prop.pais
+        return null;
     })
     return pais;
     }
@@ -155,8 +156,9 @@ class Login extends React.Component {
     setIdioma(pais){
     let idioma = "en";
     this.dicIdiomas.map((prop) =>{
-        if (pais == prop.pais)
+        if (pais === prop.pais)
         idioma = prop.idioma;
+        return null;
     })
 
     localStorage.setItem("locale",idioma)    
@@ -324,35 +326,20 @@ class Login extends React.Component {
                     else
                         mensagem=  this.stringTranslate("Erro.suporte");                                                
 
-                    toast.error(mensagem, {
-                        transition: Slide,
-                        position: "top-center",
-                        autoClose: 5000,
-                        hideProgressBar: true,
-                        closeOnClick: true,
-                        pauseOnHover: false,
-                        draggable: true,
-                        pauseOnVisibilityChange: false
-                        });                            
+                    toast.error(mensagem, toastOptions);                            
                 }
             }
             else{                 
-                toast.error(this.stringTranslate("Erro.Servidor"), {
-                transition: Slide,
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: true,
-                pauseOnVisibilityChange: false
-                });
+                toast.dismiss();
+                toast.error(this.stringTranslate("Erro.Servidor"), toastOptions);
                 this.setState({disableLoginButton: false, TextButton:  this.stringTranslate("Botao.Entrar")  });
             }
         })
         .catch(error => {
-            console.log(error);
-            clearInterval(this.timeOut);  
+            toast.dismiss();
+            toast.error(error, toastOptions);
+            clearInterval(this.timeOut); 
+            this.setState({disableLoginButton: false, TextButton:  this.stringTranslate("Botao.Entrar")  }); 
         });
     
       }
@@ -453,7 +440,7 @@ class Login extends React.Component {
                                                 <img src={logoPortaria} alt="react-logo" />
                                             </Link>
                                         ) : (
-                                            <a onClick={this.cadastraPortaria}>
+                                            <a onClick={() => this.cadastraPortaria()}>
                                                 <img src={logoPortaria} alt="react-logo" />
                                             </a>
                                         )}
@@ -475,7 +462,7 @@ class Login extends React.Component {
                                 <a
                                     className="simple-text logo-mini"
                                     target="_blank"
-                                    >
+                                >
                                     <div className="logo-img">
                                         <img src={logoNeo} alt="react-logo" />
                                     </div>

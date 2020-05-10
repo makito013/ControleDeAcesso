@@ -15,7 +15,7 @@ async function verificaIv(){
     if( cookieIv === undefined || cookieKey === undefined){
         await cookies.set('IvNk', iv, { path: '/' });
         await cookies.set('KeyNk', key, { path: '/' });
-        return {iv:iv, key:key};
+        return {iv:{data:iv}, key:{data:key}};
     }
         
     else{
