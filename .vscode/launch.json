@@ -1,0 +1,52 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "firefox",
+            "request": "launch",
+            "reAttach": true,
+            "name": "Launch localhost",
+            "url": "http://localhost/index.html",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "firefox",
+            "request": "launch",
+            "name": "Launch Firefox",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}",
+            "pathMappings": [
+                {
+                    "url": "file:///C:/Projetos/Dokeo-Controle-Acesso-Web/src/views",
+                    "path": "${workspaceFolder}/src/views"
+                }
+            ]
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome",
+            "reAttach": true,
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "edge",
+            "request": "launch",
+            "name": "Launch Edge",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}:3000"
+        },
+        {
+            "type": "edge",
+            "request": "attach",
+            "name": "Attach to Edge",
+            "port": 3000,
+            "webRoot": "${workspaceFolder}"
+        }
+        
+    ]
+}

@@ -1,0 +1,266 @@
+//
+// Basic Bootstrap table
+//
+
+.table {
+  width: 100%;
+  margin-bottom: $spacer;
+  background-color: $table-bg; // Reset for nesting within parents with `background-color`.
+
+  th,
+  td {
+    padding: $table-cell-padding;
+    vertical-align: top;
+    border-top: $table-border-width solid $table-border-color;
+  }
+
+  thead th {
+    vertical-align: bottom;
+    border-bottom: (2 * $table-border-width) solid $table-border-color;
+  }
+
+  tbody + tbody {
+    border-top: (2 * $table-border-width) solid $table-border-color;
+  }
+
+  .table {
+    background-color: $body-bg;
+  }
+}
+
+
+//
+// Condensed table w/ half padding
+//
+
+.table-sm {
+  th,
+  td {
+    padding: $table-cell-padding-sm;
+  }
+}
+
+
+// Border versions
+//
+// Add or remove borders all around the table and between all the columns.
+
+.table-bordered {
+  border: $table-border-width solid $table-border-color;
+
+  th,
+  td {
+    border: $table-border-width solid $table-border-color;
+  }
+
+  thead {
+    th,
+    td {
+      border-bottom-width: (2 * $table-border-width);
+    }
+  }
+}
+
+.table-borderless {
+  th,
+  td,
+  thead th,
+  tbody + tbody {
+    border: 0;
+  }
+}
+
+// Zebra-striping
+//
+// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+
+.table-striped {
+  tbody tr:nth-of-type(#{$table-striped-order}) {
+    background-color: $table-accent-bg;
+  }
+}
+
+
+// Hover effect
+//
+// Placed here since it has to come after the potential zebra striping
+
+.table-hover {
+  tbody tr {
+    @include hover {
+      background-color: $table-hover-bg;
+    }
+  }
+}
+
+
+// Table backgrounds
+//
+// Exact selectors below required to override `.table-striped` and prevent
+// inheritance to nested tables.
+
+@each $color, $value in $theme-colors {
+  @include table-row-variant($color, theme-color-level($color, -9));
+}
+
+@include table-row-variant(active, $table-active-bg);
+
+
+// Dark styles
+//
+// Same table markup, but inverted color scheme: dark background and light text.
+
+// stylelint-disable-next-line no-duplicate-selectors
+.table {
+  .thead-dark {
+    th {
+      color: $table-dark-color;
+      background-color: $table-dark-bg;
+      border-color: $table-dark-border-color;
+    }
+  }
+
+  .thead-light {
+    th {
+      color: $table-head-color;
+      background-color: $table-head-bg;
+      border-color: $table-border-color;
+    }
+  }
+}
+
+.table-dark {
+  color: $table-dark-color;
+  background-color: $table-dark-bg;
+
+  th,
+  td,
+  thead th {
+    border-color: $table-dark-border-color;
+  }
+
+  &.table-bordered {
+    border: 0;
+  }
+
+  &.table-striped {
+    tbody tr:nth-of-type(odd) {
+      background-color: $table-dark-accent-bg;
+    }
+  }
+
+  &.table-hover {
+    tbody tr {
+      @include hover {
+        background-color: $table-dark-hover-bg;
+      }
+    }
+  }
+}
+
+
+// Responsive tables
+//
+// Generate series of `.table-responsive-*` classes for configuring the screen
+// size of where your table will overflow.
+
+.table-responsive {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($next, $grid-breakpoints);
+
+    &#{$infix} {
+      @include media-breakpoint-down($breakpoint) {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
+
+        // Prevent double border on horizontal scroll due to use of `display: block;`
+        > .table-bordered {
+          border: 0;
+        }
+      }
+    }
+  }
+}
+
+
+.react-tabs {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.react-tabs__tab-list {
+  border-bottom: 1px solid #9c9c9c;
+  margin: 0 0 10px;
+  padding: 0 15px 0;
+}
+
+.react-tabs__tab {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-bottom: none;
+  bottom: -1px;
+  position: relative;
+  list-style: none;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.react-tabs__tab--selected {
+  background: #fff;
+  border-color: #9c9c9c;
+  color: black;
+  border-radius: 5px 5px 0 0;
+}
+
+.react-tabs__tab--disabled {
+  color: GrayText;
+  cursor: default;
+}
+
+.react-tabs__tab:focus {
+  box-shadow: 0 0 5px hsl(208, 99%, 50%);
+  border-color: hsl(208, 99%, 50%);
+  outline: none;
+}
+
+.react-tabs__tab:focus:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  left: -4px;
+  right: -4px;
+  bottom: -5px;
+  background: #fff;
+}
+
+.react-tabs__tab-panel {
+  display: none;
+}
+
+.react-tabs__tab-panel--selected {
+  display: block;
+}
+
+.react-tab__panel-content{
+    margin-left:20px;
+    margin-right:20px;
+    margin-top:20px;
+}
+
+
+.table-sm th{
+    padding: 0.3rem;
+    border-top: none;
+    border-top: none;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.table-sm td{
+    padding: 0.3rem;
+    border-top: none;
+    border-top: none;
+    border-bottom: 1px solid #dee2e6;
+}

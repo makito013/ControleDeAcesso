@@ -1,0 +1,105 @@
+{
+  "_from": "bootstrap-react-treetable",
+  "_id": "bootstrap-react-treetable@1.0.2",
+  "_inBundle": false,
+  "_integrity": "sha512-55nIFKifKdzPNZLpTeuCgn2i1wFTFCXbEHFS5Ykg0qVrfGHN0IeEMSMgbLSDP0U+iVdUdCAQTfcEMbPu6EcY4w==",
+  "_location": "/bootstrap-react-treetable",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "bootstrap-react-treetable",
+    "name": "bootstrap-react-treetable",
+    "escapedName": "bootstrap-react-treetable",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/bootstrap-react-treetable/-/bootstrap-react-treetable-1.0.2.tgz",
+  "_shasum": "82fff7adc7b2d654a85cfbdf31ad98cca0b82212",
+  "_spec": "bootstrap-react-treetable",
+  "_where": "D:\\WebDokeo",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "bugs": {
+    "url": "https://github.com/truedub/bootstrap-react-treetable/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.8",
+    "@fortawesome/free-solid-svg-icons": "^5.5.0",
+    "@fortawesome/react-fontawesome": "^0.1.3",
+    "moment": "^2.24.0",
+    "prop-types": "^15.6.2"
+  },
+  "deprecated": false,
+  "description": "A React component that presents a simple TreeTable, allowing the user to supply styling and rendering options. A default styling (using Bootstrap 4) is also available.",
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "bootstrap": "^4.1.3",
+    "copyfiles": "^2.1.0",
+    "cross-env": "^5.2.0",
+    "del": "^3.0.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "highlight.js": "^9.13.1",
+    "husky": "^1.3.1",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-highlight": "^0.12.0",
+    "react-scripts": "3.0.1",
+    "react-test-renderer": "^16.6.3",
+    "rimraf": "^2.6.2",
+    "webpack-cli": "^3.1.2"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "homepage": "https://github.com/truedub/bootstrap-react-treetable",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm test",
+      "pre-push": "npm run lint && npm test"
+    }
+  },
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "name": "bootstrap-react-treetable",
+  "peerDependencies": {
+    "bootstrap": "^4.1.3",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/truedub/bootstrap-react-treetable.git"
+  },
+  "scripts": {
+    "build": "npm run clean && babel src/lib --out-dir dist && copyfiles -f src/lib/*.css dist",
+    "build:demo": "npm run clean:demo && webpack --config webpack.config.demo.js -p --bail",
+    "clean": "rimraf dist",
+    "clean:demo": "rimraf build",
+    "eject": "react-scripts eject",
+    "lint": "eslint src",
+    "start": "react-scripts start",
+    "test": "cross-env CI=true react-scripts test --env=jsdom"
+  },
+  "version": "1.0.2"
+}
