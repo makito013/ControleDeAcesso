@@ -35,7 +35,6 @@ import {
     Col,
     FormText,
     FormFeedback,
-    Nav,
     Modal,
     ModalHeader,
     ModalBody,
@@ -128,7 +127,6 @@ class Login extends React.Component {
         //     if (ice && ice.candidate && ice.candidate.candidate)
         //     {
         //     var myIP ="";
-        //     console.log('my IP: ', ice);   
         //     pc.onicecandidate = noop;
         //     }
         // };    
@@ -249,7 +247,6 @@ class Login extends React.Component {
             this.modalForm["locais"] = e
         
         this.setState({true:true})
-        console.log(this.modalForm["locais"])
     }
 
     handleLogin() {
@@ -294,9 +291,7 @@ class Login extends React.Component {
             clearInterval(this.timeOut);      
             if(data.error === undefined)
             {   
-                if (data.retorno) {   
-                    //console.log(decrypt(encrypt("Texto de Teste")));
-                    //console.log(sessionStorage.getItem("encrypt"));                                 
+                if (data.retorno) {                                
                     if(data.token){                        
                         cookies.set(encrypt("maqCadastrada"), encrypt(data.maqCadastrada.toString()), { path: '/' });
                         cookies.set(encrypt("dokeo"), encrypt(data.dokeo.toString()), { path: '/' });
