@@ -18,7 +18,6 @@
 import React, {Component} from "react";
 import ReactDOM from "react-dom";
 import {Cookies} from 'react-cookie';
-import { createBrowserHistory } from "history";
 import { BrowserRouter , Route, Switch, Redirect } from "react-router-dom";
 import { IntlProvider, addLocaleData } from "react-intl";
 import registerServiceWorker from "./registerServiceWorker";
